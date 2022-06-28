@@ -1,0 +1,32 @@
+#include<stdio.h>
+int main()
+{
+    int t,n,key,i,a[i];
+    scanf("%d",&t);
+    while(t>0)
+    {
+     scanf("%d",&n);
+     for(i=0;i<n;i++)
+     scanf("%d",&a[i]); 
+     int count=0,flag=0;
+     scanf("%d",&key);
+     for(i=0;i<n;i++)
+     {
+       if(flag==1&&a[i]!=key)
+       break;
+       
+       if(a[i]==key){
+           flag=1;
+           count++;
+       }
+     }
+     if(flag==1)
+     {
+         printf("%d - %d",key,count);
+     }
+     else
+     printf("key not found");
+    }
+    t=t-1;
+    return 0;
+}

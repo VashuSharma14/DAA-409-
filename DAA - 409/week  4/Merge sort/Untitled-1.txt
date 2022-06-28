@@ -1,0 +1,67 @@
+#include <iostream>
+
+using namespace std;
+
+
+void mergesortedarr(int *a,int first,int mid,int last){
+    int size1=mid-first+1;
+    int size2=last-mid;
+    int temp1[size1];
+    int temp2[size2];
+
+    for(int i=0;i<size1;i++)
+        temp1[i]=a[first+i];
+
+
+    for(int i=0;i<size2;i++)
+        temp2[i]=a[mid+1+i];
+
+    int i,j,k;
+    i=j=0;
+    k=first;
+    
+    while(i<size1 && j<size2){
+        if(temp1[i]<=temp2[j]){
+            a[k++]=temp1[i];
+            i++;
+        }
+        else{
+            a[k++]=temp2[j];
+            j++;
+        }
+    }
+
+    while(i<size1){
+        a[k++]=temp1[i];
+        i++;
+    }
+    
+    while(j<size2){
+        a[k++]=temp2[j];
+        j++;
+    }
+}
+
+void mergesort(int *a,int first,int last){
+    if(first<last){
+        int mid=(first+last)/2;
+        mergesort(a,first,mid);
+        mergesort(a,mid+1,last);
+        mergesortedarr(a,first,mid,last);
+    }
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    int a[n];
+    for(int i=0;i<n;i++)
+        cin >> a[i];
+
+    mergesort(a,0,n-1);
+
+    for(int i=0;i<n;i++)
+        cout << a[i] << " ";
+    return 0;
+}

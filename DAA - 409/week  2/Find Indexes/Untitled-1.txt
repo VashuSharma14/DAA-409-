@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int n,sum;
+    cin >> n;
+    int a[n];
+    int temp[1000];
+    
+    for(int i=0;i<1000;i++)
+        temp[i]=-1;
+        
+    for(int i=0;i<n;i++){
+        cin >> a[i];
+        temp[a[i]]=i;
+    }
+    
+    for(int i=0;i<n-1;i++){
+        for(int j=i+1;j<n;j++){
+            sum=a[i]+a[j];
+            if(temp[sum]!=-1){
+                cout << i << " " << j << " " << temp[sum] << endl;
+            }
+        }
+    }
+    
+    return 0;
+}
